@@ -70,30 +70,14 @@ Then open your browser at: **http://localhost:8501**
 ---
 
 ## Team
-BSc Computer Engineering — [Your University Name]
+Triage Group for AI Engineering
+University Of Mines and Technology
 Course: AI in Engineering
 
 ---
 
 ## Repository
 GitHub: https://github.com/joeAnnan/triage-assistant
-
----
-
-## Streamlit Deployment
-
-To deploy this app to Streamlit Cloud:
-
-1. Go to [share.streamlit.io](https://share.streamlit.io)
-2. Sign in with GitHub
-3. Click **"New app"**
-4. Configure:
-   - Repository: `joeAnnan/triage-assistant`
-   - Branch: `main`
-   - Main file path: `app.py`
-5. Click **"Deploy"**
-
-The app will automatically train models on first deployment if the `.pkl` files are not present.
 
 ---
 
