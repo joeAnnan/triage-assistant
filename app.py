@@ -15,7 +15,7 @@ from security import (
 
 st.set_page_config(
     page_title="Patient Triage Assistant",
-    page_icon="🏥",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -38,7 +38,7 @@ html, body, [class*="css"] {
 footer { visibility: hidden; }
 
 .main-header {
-  background: linear-gradient(135deg, #1a5276, #2e86c1);
+  background: linear-gradient(135deg, #4A148C, #7B1FA2);
   padding: 1.1rem 1.15rem;
   border-radius: 12px;
   color: white;
@@ -76,8 +76,8 @@ footer { visibility: hidden; }
 .record-card { margin-bottom: 0.7rem; border: 1px solid #eef2f6; }
 .symptom-tag {
   display: inline-block;
-  background: #eaf2ff;
-  color: #1a5276;
+  background: #E1BEE7;
+  color: #4A148C;
   padding: 4px 10px;
   border-radius: 16px;
   margin: 3px 3px 0 0;
@@ -353,9 +353,9 @@ with tab_records:
         s1, s2, s3, s4 = st.columns(4)
         with s1:
             st.markdown(
-                f'<div class="stat-box" style="border-color:#2e86c1">'
+                f'<div class="stat-box" style="border-color:#7B1FA2">'
                 f'<div style="font-size:0.75rem;color:#777">TOTAL</div>'
-                f'<div style="font-size:1.7rem;font-weight:700;color:#2e86c1">{total}</div></div>',
+                f'<div style="font-size:1.7rem;font-weight:700;color:#7B1FA2">{total}</div></div>',
                 unsafe_allow_html=True,
             )
         with s2:
@@ -367,14 +367,14 @@ with tab_records:
             )
         with s3:
             st.markdown(
-                f'<div class="stat-box" style="border-color:#f39c12"'
+                f'<div class="stat-box" style="border-color:#f39c12">'
                 f'<div style="font-size:0.75rem;color:#777">MEDIUM</div>'
                 f'<div style="font-size:1.7rem;font-weight:700;color:#f39c12">{medium}</div></div>',
                 unsafe_allow_html=True,
             )
         with s4:
             st.markdown(
-                f'<div class="stat-box" style="border-color:#27ae60"'
+                f'<div class="stat-box" style="border-color:#27ae60">'
                 f'<div style="font-size:0.75rem;color:#777">LOW</div>'
                 f'<div style="font-size:1.7rem;font-weight:700;color:#27ae60">{low}</div></div>',
                 unsafe_allow_html=True,
