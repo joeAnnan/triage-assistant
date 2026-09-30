@@ -74,9 +74,9 @@ URGENCY_COLORS = {
 }
 
 URGENCY_ADVICE = {
-    "HIGH": "⚠️ This patient needs IMMEDIATE medical attention. Do not delay.",
-    "MEDIUM": "🕐 This patient should see a doctor within the next hour.",
-    "LOW": "✅ Condition appears non-critical. Patient can wait for routine consultation."
+    "HIGH": "This patient needs IMMEDIATE medical attention. Do not delay.",
+    "MEDIUM": "This patient should see a doctor within the next hour.",
+    "LOW": "Condition appears non-critical. Patient can wait for routine consultation."
 }
 
 def clean_symptom_text(text: str) -> str:
