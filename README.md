@@ -1,13 +1,13 @@
-# 🏥 AI Patient Triage Assistant
+# AI Patient Triage Assistant
 ### BSc Computer Engineering — AI in Engineering Project
 ---
 
-## 📌 Problem Statement
+## Problem Statement
 Ghanaian clinics, especially rural CHPS compounds and district hospitals, face severe
 staff shortages. Patients queue regardless of urgency, and critical cases sometimes
 worsen while waiting. This AI system helps nurses quickly assess and prioritize patients.
 
-## 🤖 Solution
+## Solution
 A machine learning web app that:
 - Takes patient symptoms as input
 - Predicts urgency level: HIGH / MEDIUM / LOW
@@ -16,7 +16,7 @@ A machine learning web app that:
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 ```
 triage-assistant/
 ├── app.py              # Streamlit web application
@@ -33,7 +33,7 @@ triage-assistant/
 
 ---
 
-## 🚀 Setup & Run (Step by Step)
+## Setup & Run (Step by Step)
 
 ### Step 1 — Install dependencies
 ```bash
@@ -58,7 +58,7 @@ Then open your browser at: **http://localhost:8501**
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 | Component       | Technology                        |
 |----------------|-----------------------------------|
 | Language        | Python 3.10+                     |
@@ -69,18 +69,18 @@ Then open your browser at: **http://localhost:8501**
 
 ---
 
-## 👥 Team
+## Team
 BSc Computer Engineering — [Your University Name]
 Course: AI in Engineering
 
 ---
 
-## 🌐 Repository
+## Repository
 GitHub: https://github.com/joeAnnan/triage-assistant
 
 ---
 
-## 🚀 Streamlit Deployment
+## Streamlit Deployment
 
 To deploy this app to Streamlit Cloud:
 
@@ -97,5 +97,5 @@ The app will automatically train models on first deployment if the `.pkl` files 
 
 ---
 
-## ⚠️ Disclaimer
+## Disclaimer
 This is an academic prototype and does NOT replace professional medical diagnosis.
