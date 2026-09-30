@@ -406,8 +406,7 @@ with tab_records:
                 f'<div style="font-size:0.85rem;color:#555;margin-top:0.25rem">'
                 f"{row.get('Age', '')} yrs · {row.get('Sex', '')} · {row.get('Duration', '')}{extra}</div>'
                 f'<div style="margin-top:0.4rem;font-size:0.9rem">{symptoms}</div>'
-                f'<div style="margin-top:0.35rem;font-size:0.85rem"><strong>Possible condition:</strong> '
-                f"{row.get('Condition', '')}</div>"
+                f'<div style="margin-top:0.35rem;font-size:0.85rem"><strong>Possible condition:</strong> {row.get("Condition", "")}</div>'
                 f'<div style="margin-top:0.2rem;font-size:0.78rem;color:#777">{row.get("Timestamp", "")}</div>'
                 f"</div>",
                 unsafe_allow_html=True,
