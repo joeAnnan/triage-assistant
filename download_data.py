@@ -2,11 +2,9 @@ import pandas as pd
 import numpy as np
 import os
 
-os.makedirs("data", exist_ok=True)
+DATA_PATH = os.path.join("data", "dataset.csv")
 
-np.random.seed(42)
-
-diseases = {
+DISEASES = {
     'Malaria':         (['fever','chills','sweating','headache','vomiting','fatigue','body ache','high temperature'], 'HIGH'),
     'Typhoid':         (['fever','headache','abdominal pain','loss of appetite','weakness','diarrhea','vomiting'], 'HIGH'),
     'Pneumonia':       (['cough','chest pain','difficulty breathing','fever','fatigue','chills'], 'HIGH'),
@@ -27,15 +25,24 @@ diseases = {
     'Acne':            (['skin rash','redness','itching','swelling'], 'LOW'),
 }
 
-rows = []
-for disease, (symptoms, urgency) in diseases.items():
-    for _ in range(80):
-        n = np.random.randint(3, len(symptoms)+1)
-        chosen = np.random.choice(symptoms, size=n, replace=False)
-        symptom_cols = {f'Symptom_{i+1}': (chosen[i] if i < len(chosen) else '') for i in range(8)}
-        rows.append({'disease': disease, 'urgency': urgency, **symptom_cols})
+def generate_dataset(path: str = DATA_PATH) -> str:
+    os.makedirs(os.path.dirname(path) or "data", exist_ok=True)
+    np.random.seed(42)
+    rows = []
+    for disease, (symptoms, urgency) in DISEASES.items():
+        for _ in range(80):
+            n = np.random.randint(3, len(symptoms) + 1)
+            chosen = np.random.choice(symptoms, size=n, replace=False)
+            symptom_cols = {
+                f"Symptom_{i + 1}": (chosen[i] if i < len(chosen) else "")
+                for i in range(8)
+            }
+            rows.append({"disease": disease, "urgency": urgency, **symptom_cols})
+    df = pd.DataFrame(rows)
+    df.to_csv(path, index=False)
+    return path
 
-df = pd.DataFrame(rows)
-df.to_csv('data/dataset.csv', index=False)
-print(f'✅ Dataset generated: {len(df)} records, {df["disease"].nunique()} diseases')
-print(df['urgency'].value_counts())
+
+if __name__ == "__main__":
+    generate_dataset()
+    print(f"Dataset saved to {DATA_PATH}")

@@ -9,6 +9,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import classification_report, confusion_matrix
 from preprocess import load_and_prepare_data, clean_symptom_text
+from download_data import generate_dataset, DATA_PATH
 
 # ─── Config ──────────────────────────────────────────────────────────────────
 DATA_PATH   = "data/dataset.csv"
@@ -81,6 +82,30 @@ def train_disease_model(df: pd.DataFrame):
     return pipeline
 
 
+def _models_loadable() -> bool:
+    """Check if model files exist and can be loaded."""
+    if not (os.path.exists(MODEL_PATH) and os.path.exists(DISEASE_MODEL_PATH)):
+        return False
+    try:
+        joblib.load(MODEL_PATH)
+        joblib.load(DISEASE_MODEL_PATH)
+        return True
+    except Exception:
+        return False
+
+
+def ensure_models():
+    """Load existing models, or train them if missing or incompatible."""
+    if _models_loadable():
+        return joblib.load(MODEL_PATH), joblib.load(DISEASE_MODEL_PATH)
+    if not os.path.exists(DATA_PATH):
+        generate_dataset(DATA_PATH)
+    df = load_and_prepare_data(DATA_PATH)
+    train_urgency_model(df)
+    train_disease_model(df)
+    return joblib.load(MODEL_PATH), joblib.load(DISEASE_MODEL_PATH)
+
+
 def predict(symptoms_text: str):
     """Run inference on raw symptom text input."""
     urgency_model  = joblib.load(MODEL_PATH)
@@ -104,6 +129,8 @@ def predict(symptoms_text: str):
 
 if __name__ == "__main__":
     print("📂 Loading and preparing data...")
+    if not os.path.exists(DATA_PATH):
+        generate_dataset(DATA_PATH)
     df = load_and_prepare_data(DATA_PATH)
     print(f"✅ Loaded {len(df)} records with {df['disease'].nunique()} unique conditions\n")
 
